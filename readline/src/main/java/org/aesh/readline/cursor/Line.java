@@ -304,12 +304,27 @@ public class Line {
     }
 
     /**
+     * Returns a string from the the cursor position to the end of the line. Takes into
+     * account multiple lines.
+     *
+     * @return
+     */
+    public String getLineFromCursor() {
+        return buffer.asString().substring(buffer.multiCursor());
+    }
+
+    /**
      * Returns the character located at the cursor.
      *
      * @return The character.
      */
     public int getCharacterAtCursor() {
         return buffer.get(buffer.cursor());
+    }
+
+    @Override
+    public String toString() {
+        return this.buffer.asString();
     }
 
     private void moveUp(int delta) {
